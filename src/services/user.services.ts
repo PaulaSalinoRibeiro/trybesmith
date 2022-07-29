@@ -4,7 +4,7 @@ import IUser from '../interfaces/IUser';
 
 export const createUser = async (user: IUser): Promise<string> => {
   await UserModel.createUser(user);
-  const token = createToken(user);
+  const token = createToken(user.username);
   return token;
 };
 

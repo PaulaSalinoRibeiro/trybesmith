@@ -18,3 +18,12 @@ export const listAllUser = async (): Promise<IUser[]> => {
 
   return users as IUser[];
 };
+
+export const checkLogin = async (user: IUser): Promise<IUser> => {
+  const [result] = await connection.execute(
+    'SELECT id, username FROM Trybesmith.Users WHERE username=? AND password=?',
+    [user.username, user.password],
+  );
+  const [userLogin] = result as IUser[];
+  return userLogin;
+};
