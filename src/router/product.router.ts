@@ -7,5 +7,4 @@ product.post('/', ProductController.createProduct);
 
 product.get('/', ProductController.listAllProduct);
 
-
 export default product;
