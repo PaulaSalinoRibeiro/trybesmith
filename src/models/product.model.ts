@@ -14,7 +14,18 @@ export const createProduct = async (product: IProduct): Promise<IProduct> => {
 
 export const listAllProduct = async (): Promise<IProduct[]> => {
   const [products] = await connection.execute(
-    'SELECT * FROM  Trybesmith.Products',
+    'SELECT * FROM Trybesmith.Products',
   );
   return products as IProduct[];
 };
+
+// export const getIdProduct = async (id: number): Promise<IProduct | null> => {
+//   const [result] = await connection.execute(
+//     'SELECT * FROM Trybesmith.Products WHERE id=?',
+//     [id],
+//   );
+
+//   const [product] = result as IProduct[];
+
+//   return product;
+// };
