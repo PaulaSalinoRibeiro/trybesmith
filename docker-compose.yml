@@ -41,6 +41,7 @@ services:
   db:
     container_name: trybesmith_db
     image: mysql:8.0.21
+    platform: linux/amd64
     restart: always
     # Lista de portas mapeadas de dentro para fora do container
     # na notação porta_de_fora:porta_de_dentro
