@@ -4,3 +4,7 @@ export default interface IProduct {
   amount: string;
   orderId?: number;
 }
+
+export interface IProductsId {
+  productsIds: string 
+}

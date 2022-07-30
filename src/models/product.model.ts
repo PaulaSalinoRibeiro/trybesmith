@@ -1,5 +1,5 @@
 import { ResultSetHeader } from 'mysql2/promise';
-import IProduct from '../interfaces/IProduct';
+import IProduct, { IProductsId } from '../interfaces/IProduct';
 import connection from './connection';
 
 export const createProduct = async (product: IProduct): Promise<IProduct> => {
@@ -19,13 +19,10 @@ export const listAllProduct = async (): Promise<IProduct[]> => {
   return products as IProduct[];
 };
 
-// export const getIdProduct = async (id: number): Promise<IProduct | null> => {
-//   const [result] = await connection.execute(
-//     'SELECT * FROM Trybesmith.Products WHERE id=?',
-//     [id],
-//   );
-
-//   const [product] = result as IProduct[];
-
-//   return product;
-// };
+export const getIdProduct = async (id: number): Promise<IProductsId[]> => {
+  const [result] = await connection.execute(
+    'SELECT GROUP_CONCAT(id) as productsIds FROM Trybesmith.Products WHERE orderId = ?',
+    [id],
+  );
+  return result as IProductsId[];
+};
