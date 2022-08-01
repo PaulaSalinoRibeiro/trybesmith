@@ -8,7 +8,7 @@ dotenv.config();
 
 const jwtConfig: SignOptions = { expiresIn: '30d' };
 
-const SECRET: Secret = process.env.JWT_SECRET || 'UmSegredoQualquer';
+const SECRET: Secret = process.env.JWT_SECRET || '';
   
 export const createToken = (user: Omit<IUser, 'password'>): string => {
   const token = jwt.sign({ user }, SECRET, jwtConfig);
