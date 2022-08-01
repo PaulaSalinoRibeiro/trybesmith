@@ -8,3 +8,7 @@ export default interface IProduct {
 export interface IProductsId {
   productsIds: string 
 }
+
+export type ProductsIds = {
+  productsIds: number[]
+};

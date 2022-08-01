@@ -5,4 +5,6 @@ const order = Router();
 
 order.get('/', OrderController.listAllOrders);
 
+order.post('/', OrderController.createOrder);
+
 export default order;

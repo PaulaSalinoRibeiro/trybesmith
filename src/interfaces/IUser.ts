@@ -5,3 +5,7 @@ export default interface IUser {
   level?: number;
   password: string;
 }
+
+export type User = {
+  user: IUser
+};

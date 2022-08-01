@@ -21,7 +21,7 @@ export const login = async (user: IUser):Promise<string | void> => {
     throwError('Unauthorized', 'Username or password invalid');
   }
   
-  const token = createToken(userExist.username);
+  const token = createToken(userExist);
   return token;
 };
 

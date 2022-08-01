@@ -2,13 +2,20 @@ import { ResultSetHeader } from 'mysql2/promise';
 import connection from './connection';
 import IUser from '../interfaces/IUser';
 
-export const createUser = async (user: IUser): Promise<void> => {
+export const createUser = async (user: IUser): Promise<IUser> => {
   const { username, classe, level, password } = user;
-  await connection.execute<ResultSetHeader>(
+  const [result] = await connection.execute<ResultSetHeader>(
     `INSERT INTO  Trybesmith.Users (username, classe, level, password)
      VALUES (?, ?, ?, ?)`,
     [username, classe, level, password],
   );
+
+  const { insertId } = result;
+
+  return {
+    id: insertId,
+    ...user,
+  };
 };
 
 export const listAllUser = async (): Promise<IUser[]> => {
@@ -21,7 +28,7 @@ export const listAllUser = async (): Promise<IUser[]> => {
 
 export const checkLogin = async (user: IUser): Promise<IUser> => {
   const [result] = await connection.execute(
-    'SELECT id, username FROM Trybesmith.Users WHERE username=? AND password=?',
+    'SELECT * FROM Trybesmith.Users WHERE username=? AND password=?',
     [user.username, user.password],
   );
   const [userLogin] = result as IUser[];

@@ -26,3 +26,10 @@ export const getIdProduct = async (id: number): Promise<IProductsId[]> => {
   );
   return result as IProductsId[];
 };
+
+export const updateProduct = async (orderId: number, id: number): Promise<void> => {
+  await connection.execute(
+    'UPDATE Trybesmith.Products SET orderId=? WHERE id=?',
+    [orderId, id],
+  );
+};

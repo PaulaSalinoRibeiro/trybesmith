@@ -32,8 +32,8 @@ export const createUser = async (user: IUser): Promise<string> => {
   keysValidated(user);
   valuesValidate(user);
 
-  await UserModel.createUser(user);
-  const token = createToken(user.username);
+  const newuser = await UserModel.createUser(user);
+  const token = createToken(newuser);
   return token;
 };
 
