@@ -5,6 +5,14 @@
   - rodar o comando `npm install`
   - criar um arquivo `.env`na raiz do projeto e passar as variaveis de ambiente para acessar o banco de dados e um secreto para o jwt
   - rodar o comando `npm run dev`
+  - criar na raiz do projeto um arquivo `.env`com as seguintes variáveis de ambiente
+  
+  ```
+  MYSQL_HOST=localhost
+  MYSQL_USER=root
+  MYSQL_PASSWORD=password
+  JWT_SECRET=JWTSecret
+  ```
 
 ## Bibliotecas utilizadas
   - typescript
